@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import GameScene from './GameScene.jsx';
 import './game-hud.css';
+import './mobile-overrides.css';
 
 const stages = [
   { id: 'opening', title: 'ქუჩა', tiny: 'FREE ROAM' },
