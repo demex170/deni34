@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#080a12" />
+    <meta name="description" content="დემეს მოწვევა ნინის — ერთი საღამოს პატარა ისტორია." />
+    <title>ერთი საღამო · დემე × ნინი</title>
+    <style>
+      html, body { min-height: 100%; margin: 0; background: #080a12; color: #f2ede6; font-family: Arial, sans-serif; }
+      .launch-fallback { min-height: 100svh; display: grid; place-items: center; padding: 24px; box-sizing: border-box; background: radial-gradient(ellipse at 50% 38%, #211a23 0, #0b0c13 57%, #07080d 100%); }
+      .launch-card { max-width: 520px; padding: 34px; border: 1px solid #e6bb9940; background: #11131bd9; box-shadow: 0 24px 90px #0008; }
+      .launch-mark { color: #e9c09b; font: 12px monospace; letter-spacing: .2em; }
+      .launch-card h1 { margin: 20px 0 10px; font-size: clamp(26px, 6vw, 40px); font-weight: 500; }
+      .launch-card p { color: #aaa5aa; font-size: 14px; line-height: 1.8; }
+      .launch-card code { display: block; margin: 18px 0 8px; padding: 14px; border-left: 2px solid #e6bb99; background: #090a10; color: #edc39f; line-height: 1.9; }
+      .launch-note { color: #76747d !important; font-size: 11px !important; }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <main class="launch-fallback">
+        <section class="launch-card">
+          <span class="launch-mark">D × N　 /　 ONE EVENING</span>
+          <h1>საღამო მზად არის.</h1>
+          <p>ეს ფაილი პირდაპირ გაიხსნა. React + Three.js ვერსიის სანახავად გაუშვი <b>start-site.bat</b> ან პროექტის საქაღალდეში შეიყვანე:</p>
+          <code>npm install<br />npm run dev</code>
+          <p class="launch-note">საიტი ამ ეკრანის ნაცვლად ავტომატურად ჩაიტვირთება, როცა ადგილობრივი სერვერით გახსნი.</p>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
