@@ -1,0 +1,55 @@
+name: Build and publish GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'vite.config.js'
+      - 'source.html'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-main
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build for this GitHub Pages project
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          cp source.html index.html
+          npm run build
+      - name: Publish built site to the Pages branch root
+        run: |
+          cp dist/index.html index.html
+          rm -rf assets
+          cp -R dist/assets assets
+          touch .nojekyll
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets .nojekyll
+          if git diff --cached --quiet; then
+            echo "Built site is already up to date."
+          else
+            git commit -m "Deploy built site"
+            git push
+          fi
